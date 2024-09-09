@@ -58,17 +58,15 @@ void pins_init(void){
         
 }
 
-void read_input_pins(void) {
+void read_input_pins(void){
     raw_input = PORTA;
     masked_input = (raw_input & 0x0f);
 }
 
-void process_io(void) {
+void process_io(void){
     
-    masked_input = (raw_input & 0x0f);
-    if(masked_input){
-        master_tally = 0x01;
-    }
+    
+    
     
     
 }
