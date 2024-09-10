@@ -1,20 +1,29 @@
 Version 4.0 HI-TECH Software Intermediate Code
 [p mainexit ]
 "22 main.c
-[; ;main.c: 22:         process_io();
+[; ;main.c: 22: 
 [v _system_init `(v ~T0 @X0 0 ef ]
-"23
-[; ;main.c: 23: 
-[v _pins_init `(v ~T0 @X0 0 ef ]
 "24
-[; ;main.c: 24:     }
-[v _read_input_pins `(v ~T0 @X0 0 ef ]
-"25
-[; ;main.c: 25: 
+[; ;main.c: 24: 
 [v _process_io `(v ~T0 @X0 0 ef ]
 "166 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc\pic16f690.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc\pic16f690.h: 166: extern volatile unsigned char PORTA __attribute__((address(0x005)));
 [v _PORTA `Vuc ~T0 @X0 0 e@5 ]
+"1245
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc\pic16f690.h: 1245: extern volatile unsigned char TRISA __attribute__((address(0x085)));
+[v _TRISA `Vuc ~T0 @X0 0 e@133 ]
+"216
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc\pic16f690.h: 216: extern volatile unsigned char PORTB __attribute__((address(0x006)));
+[v _PORTB `Vuc ~T0 @X0 0 e@6 ]
+"1295
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc\pic16f690.h: 1295: extern volatile unsigned char TRISB __attribute__((address(0x086)));
+[v _TRISB `Vuc ~T0 @X0 0 e@134 ]
+"255
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc\pic16f690.h: 255: extern volatile unsigned char PORTC __attribute__((address(0x007)));
+[v _PORTC `Vuc ~T0 @X0 0 e@7 ]
+"1334
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc\pic16f690.h: 1334: extern volatile unsigned char TRISC __attribute__((address(0x087)));
+[v _TRISC `Vuc ~T0 @X0 0 e@135 ]
 "54 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc\pic16f690.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc\pic16f690.h: 54: __asm("INDF equ 00h");
 [; <" INDF equ 00h ;# ">
@@ -235,127 +244,146 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc\pic16f690.h: 3200: __asm("SRCON equ 019Eh");
 [; <" SRCON equ 019Eh ;# ">
 "12 main.c
-[; ;main.c: 12: void main(void) {
+[; ;main.c: 12: 
 [p x FOSC  =  EXTRCIO    ]
 "13
-[; ;main.c: 13: 
+[; ;main.c: 13:     system_init();
 [p x WDTE  =  ON         ]
 "14
-[; ;main.c: 14:     system_init();
+[; ;main.c: 14: 
 [p x PWRTE  =  OFF       ]
 "15
-[; ;main.c: 15: 
+[; ;main.c: 15:     while(1) {
 [p x MCLRE  =  ON        ]
 "16
-[; ;main.c: 16:     pins_init();
+[; ;main.c: 16: 
 [p x CP  =  OFF          ]
 "17
-[; ;main.c: 17: 
+[; ;main.c: 17:         process_io();
 [p x CPD  =  OFF         ]
 "18
-[; ;main.c: 18:     while(1) {
+[; ;main.c: 18: 
 [p x BOREN  =  ON        ]
 "19
-[; ;main.c: 19: 
+[; ;main.c: 19:     }
 [p x IESO  =  ON         ]
 "20
-[; ;main.c: 20:         read_input_pins();
+[; ;main.c: 20: 
 [p x FCMEN  =  ON        ]
-"27
-[; ;main.c: 27: 
+"26
+[; ;main.c: 26: 
 [v _input_lines `uc ~T0 @X0 1 e ]
-"28
-[; ;main.c: 28: }
+"27
+[; ;main.c: 27:     PORTA = 0;
 [v _masked_input `uc ~T0 @X0 1 e ]
+"28
+[; ;main.c: 28:     TRISA = 0x20;
+[v _output_lines_pos `uc ~T0 @X0 1 e ]
 "29
 [; ;main.c: 29: 
-[v _output_lines_pos `uc ~T0 @X0 1 e ]
-"30
-[; ;main.c: 30: void system_init(void){
 [v _output_lines_neg `uc ~T0 @X0 1 e ]
-"31
-[; ;main.c: 31: 
+"30
+[; ;main.c: 30:     PORTB = 0;
 [v _master_tally `uc ~T0 @X0 1 e ]
-"32
-[; ;main.c: 32: 
+"31
+[; ;main.c: 31:     TRISB = 0xf0;
 [v _raw_input `uc ~T0 @X0 1 e ]
 [v $root$_main `(v ~T0 @X0 0 e ]
-"34
-[; ;main.c: 34: 
+"33
+[; ;main.c: 33:     PORTC = 0;
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"36
-[; ;main.c: 36: 
+"35
+[; ;main.c: 35: 
 [e ( _system_init ..  ]
-"38
-[; ;main.c: 38: 
-[e ( _pins_init ..  ]
-"40
-[; ;main.c: 40:     raw_input = PORTA;
+"37
+[; ;main.c: 37:     masked_input = 0;
 [e :U 137 ]
 {
-"42
-[; ;main.c: 42: }
-[e ( _read_input_pins ..  ]
-"44
-[; ;main.c: 44: void process_io(void) {
+"39
+[; ;main.c: 39:     output_lines_neg = 0;
 [e ( _process_io ..  ]
-"46
-[; ;main.c: 46:     masked_input = (raw_input & 0x0f);
+"41
+[; ;main.c: 41: 
 }
 [e :U 136 ]
 [e $U 137  ]
 [e :U 138 ]
-"50
-[; ;main.c: 50: 
+"45
+[; ;main.c: 45: 
 [e :UE 135 ]
 }
-"52
-[; ;main.c: 52: }
+"47
+[; ;main.c: 47: 
 [v _system_init `(v ~T0 @X0 1 ef ]
 {
 [e :U _system_init ]
 [f ]
+"49
+[; ;main.c: 49: 
+[e = _PORTA -> -> 0 `i `uc ]
+"50
+[; ;main.c: 50: 
+[e = _TRISA -> -> 32 `i `uc ]
+"52
+[; ;main.c: 52: 
+[e = _PORTB -> -> 0 `i `uc ]
+"53
+[; ;main.c: 53:     output_lines_pos = raw_input;
+[e = _TRISB -> -> 240 `i `uc ]
 "55
+[; ;main.c: 55: 
+[e = _PORTC -> -> 0 `i `uc ]
+"56
+[; ;main.c: 56: 
+[e = _TRISC -> -> 240 `i `uc ]
+"58
+[; ;main.c: 58:         master_tally = 1;
+[e = _raw_input -> -> 0 `i `uc ]
+"59
+[; ;main.c: 59:     } else {
+[e = _masked_input -> -> 0 `i `uc ]
+"60
+[; ;main.c: 60:         master_tally = 0;
+[e = _output_lines_pos -> -> 0 `i `uc ]
+"61
+[; ;main.c: 61:     }
+[e = _output_lines_neg -> -> 0 `i `uc ]
+"62
+[; ;main.c: 62: 
+[e = _master_tally -> -> 0 `i `uc ]
+"64
+[; ;main.c: 64: 
 [e :UE 139 ]
 }
-"57
-[v _pins_init `(v ~T0 @X0 1 ef ]
-{
-[e :U _pins_init ]
-[f ]
-"59
-[e :UE 140 ]
-}
-"61
-[v _read_input_pins `(v ~T0 @X0 1 ef ]
-{
-[e :U _read_input_pins ]
-[f ]
-"62
-[e = _raw_input _PORTA ]
-"63
-[e = _masked_input -> & -> _raw_input `i -> 15 `i `uc ]
-"64
-[e :UE 141 ]
-}
-"66
+"70
 [v _process_io `(v ~T0 @X0 1 ef ]
 {
 [e :U _process_io ]
 [f ]
-"68
-[e = _masked_input -> & -> _raw_input `i -> 15 `i `uc ]
-"69
-[e $ ! != -> _masked_input `i -> 0 `i 143  ]
+"73
+[e = _raw_input -> & -> _PORTC `i -> 240 `i `uc ]
+"75
+[e = _output_lines_pos _raw_input ]
+"76
+[e = _output_lines_neg -> ~ -> _output_lines_pos `i `uc ]
+"79
+[e $ ! != -> _output_lines_neg `i -> 0 `i 141  ]
 {
-"70
+"80
 [e = _master_tally -> -> 1 `i `uc ]
-"71
+"81
 }
-[e :U 143 ]
-"74
-[e :UE 142 ]
+[e $U 142  ]
+[e :U 141 ]
+{
+"82
+[e = _master_tally -> -> 0 `i `uc ]
+"83
+}
+[e :U 142 ]
+"89
+[e :UE 140 ]
 }

@@ -11,46 +11,46 @@
 [v ___eecpymem __eecpymem `(v  1 e 1 0 ]
 "39
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
-"34 C:\Users\Andy\Desktop\repos\micLights\lightController.X\main.c
+"33 C:\Users\Andy\Desktop\repos\micLights\lightController.X\main.c
 [v _main main `(v  1 e 1 0 ]
-"52
+"47
 [v _system_init system_init `(v  1 e 1 0 ]
-"57
-[v _pins_init pins_init `(v  1 e 1 0 ]
-"61
-[v _read_input_pins read_input_pins `(v  1 e 1 0 ]
-"66
+"70
 [v _process_io process_io `(v  1 e 1 0 ]
 "166 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc\pic16f690.h
 [v _PORTA PORTA `VEuc  1 e 1 @5 ]
-"28 C:\Users\Andy\Desktop\repos\micLights\lightController.X\main.c
+"216
+[v _PORTB PORTB `VEuc  1 e 1 @6 ]
+"255
+[v _PORTC PORTC `VEuc  1 e 1 @7 ]
+"1245
+[v _TRISA TRISA `VEuc  1 e 1 @133 ]
+"1295
+[v _TRISB TRISB `VEuc  1 e 1 @134 ]
+"1334
+[v _TRISC TRISC `VEuc  1 e 1 @135 ]
+"27 C:\Users\Andy\Desktop\repos\micLights\lightController.X\main.c
 [v _masked_input masked_input `uc  1 e 1 0 ]
-"31
+"28
+[v _output_lines_pos output_lines_pos `uc  1 e 1 0 ]
+"29
+[v _output_lines_neg output_lines_neg `uc  1 e 1 0 ]
+"30
 [v _master_tally master_tally `uc  1 e 1 0 ]
-"32
+"31
 [v _raw_input raw_input `uc  1 e 1 0 ]
-"34
+"33
 [v _main main `(v  1 e 1 0 ]
 {
-"50
+"45
 } 0
-"52
+"47
 [v _system_init system_init `(v  1 e 1 0 ]
-{
-"55
-} 0
-"61
-[v _read_input_pins read_input_pins `(v  1 e 1 0 ]
 {
 "64
 } 0
-"66
+"70
 [v _process_io process_io `(v  1 e 1 0 ]
 {
-"74
-} 0
-"57
-[v _pins_init pins_init `(v  1 e 1 0 ]
-{
-"59
+"89
 } 0

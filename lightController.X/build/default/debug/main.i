@@ -2429,8 +2429,7 @@ extern __bank0 __bit __timeout;
 #pragma config FCMEN = ON
 
 void system_init(void);
-void pins_init(void);
-void read_input_pins(void);
+
 void process_io(void);
 
 unsigned char input_lines;
@@ -2444,11 +2443,7 @@ void main(void) {
 
     system_init();
 
-    pins_init();
-
     while(1) {
-
-        read_input_pins();
 
         process_io();
 
@@ -2460,24 +2455,44 @@ void main(void) {
 
 void system_init(void){
 
+    PORTA = 0;
+    TRISA = 0x20;
+
+    PORTB = 0;
+    TRISB = 0xf0;
+
+    PORTC = 0;
+    TRISC = 0xf0;
+
+    raw_input = 0;
+    masked_input = 0;
+    output_lines_pos = 0;
+    output_lines_neg = 0;
+    master_tally = 0;
 
 }
 
-void pins_init(void){
 
-}
 
-void read_input_pins(void) {
-    raw_input = PORTA;
-    masked_input = (raw_input & 0x0f);
-}
 
-void process_io(void) {
 
-    masked_input = (raw_input & 0x0f);
-    if(masked_input){
-        master_tally = 0x01;
+void process_io(void){
+
+
+    raw_input = (PORTC & 0xf0);
+
+    output_lines_pos = raw_input;
+    output_lines_neg = ~output_lines_pos;
+
+
+    if(output_lines_neg) {
+        master_tally = 1;
+    } else {
+        master_tally = 0;
     }
+
+
+
 
 
 }
