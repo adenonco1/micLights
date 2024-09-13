@@ -1,14 +1,17 @@
 Version 4.0 HI-TECH Software Intermediate Code
 [p mainexit ]
 "22 main.c
-[; ;main.c: 22: 
+[; ;main.c: 22:     TRISA = 0x00;
 [v _system_init `(v ~T0 @X0 0 ef ]
-"24
-[; ;main.c: 24: 
+"23
+[; ;main.c: 23: 
 [v _process_io `(v ~T0 @X0 0 ef ]
 "166 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc\pic16f690.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc\pic16f690.h: 166: extern volatile unsigned char PORTA __attribute__((address(0x005)));
 [v _PORTA `Vuc ~T0 @X0 0 e@5 ]
+"3002
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc\pic16f690.h: 3002: extern volatile unsigned char ANSEL __attribute__((address(0x11E)));
+[v _ANSEL `Vuc ~T0 @X0 0 e@286 ]
 "1245
 [; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc\pic16f690.h: 1245: extern volatile unsigned char TRISA __attribute__((address(0x085)));
 [v _TRISA `Vuc ~T0 @X0 0 e@133 ]
@@ -245,145 +248,136 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; <" SRCON equ 019Eh ;# ">
 "12 main.c
 [; ;main.c: 12: 
-[p x FOSC  =  EXTRCIO    ]
+[p x FOSC  =  INTRCIO    ]
 "13
-[; ;main.c: 13:     system_init();
+[; ;main.c: 13:         process_io();
 [p x WDTE  =  ON         ]
 "14
 [; ;main.c: 14: 
 [p x PWRTE  =  OFF       ]
 "15
-[; ;main.c: 15:     while(1) {
+[; ;main.c: 15:     }
 [p x MCLRE  =  ON        ]
 "16
-[; ;main.c: 16: 
+[; ;main.c: 16: }
 [p x CP  =  OFF          ]
 "17
-[; ;main.c: 17:         process_io();
+[; ;main.c: 17: 
 [p x CPD  =  OFF         ]
 "18
-[; ;main.c: 18: 
+[; ;main.c: 18: void system_init(void){
 [p x BOREN  =  ON        ]
 "19
-[; ;main.c: 19:     }
+[; ;main.c: 19: 
 [p x IESO  =  ON         ]
 "20
-[; ;main.c: 20: 
+[; ;main.c: 20:     PORTA = 0;
 [p x FCMEN  =  ON        ]
+"25
+[; ;main.c: 25:     TRISB = 0xf0;
+[v _positive_out `uc ~T0 @X0 1 e ]
 "26
 [; ;main.c: 26: 
-[v _input_lines `uc ~T0 @X0 1 e ]
+[v _negative_out `uc ~T0 @X0 1 e ]
 "27
-[; ;main.c: 27:     PORTA = 0;
-[v _masked_input `uc ~T0 @X0 1 e ]
-"28
-[; ;main.c: 28:     TRISA = 0x20;
-[v _output_lines_pos `uc ~T0 @X0 1 e ]
-"29
-[; ;main.c: 29: 
-[v _output_lines_neg `uc ~T0 @X0 1 e ]
-"30
-[; ;main.c: 30:     PORTB = 0;
-[v _master_tally `uc ~T0 @X0 1 e ]
-"31
-[; ;main.c: 31:     TRISB = 0xf0;
+[; ;main.c: 27:     PORTC = 0;
 [v _raw_input `uc ~T0 @X0 1 e ]
 [v $root$_main `(v ~T0 @X0 0 e ]
-"33
-[; ;main.c: 33:     PORTC = 0;
+"29
+[; ;main.c: 29:     TRISC = 0x00;
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"35
-[; ;main.c: 35: 
+"31
+[; ;main.c: 31:     raw_input = 0;
 [e ( _system_init ..  ]
-"37
-[; ;main.c: 37:     masked_input = 0;
+"33
+[; ;main.c: 33:     negative_out = 0;
 [e :U 137 ]
 {
-"39
-[; ;main.c: 39:     output_lines_neg = 0;
+"35
+[; ;main.c: 35: 
 [e ( _process_io ..  ]
-"41
-[; ;main.c: 41: 
+"37
+[; ;main.c: 37: 
 }
 [e :U 136 ]
 [e $U 137  ]
 [e :U 138 ]
-"45
-[; ;main.c: 45: 
+"38
+[; ;main.c: 38: 
 [e :UE 135 ]
 }
-"47
-[; ;main.c: 47: 
+"40
+[; ;main.c: 40: 
 [v _system_init `(v ~T0 @X0 1 ef ]
 {
 [e :U _system_init ]
 [f ]
-"49
-[; ;main.c: 49: 
+"42
+[; ;main.c: 42:     negative_out = (~(positive_out >> 4)) & 0x0f;
 [e = _PORTA -> -> 0 `i `uc ]
-"50
-[; ;main.c: 50: 
-[e = _TRISA -> -> 32 `i `uc ]
-"52
-[; ;main.c: 52: 
+"43
+[; ;main.c: 43: 
+[e = _ANSEL -> -> 0 `i `uc ]
+"44
+[; ;main.c: 44: 
+[e = _TRISA -> -> 0 `i `uc ]
+"46
+[; ;main.c: 46: 
 [e = _PORTB -> -> 0 `i `uc ]
-"53
-[; ;main.c: 53:     output_lines_pos = raw_input;
+"47
+[; ;main.c: 47:     if(positive_out == 0xf0) {
 [e = _TRISB -> -> 240 `i `uc ]
-"55
-[; ;main.c: 55: 
+"49
+[; ;main.c: 49:         PORTA &= ~0x20;
 [e = _PORTC -> -> 0 `i `uc ]
-"56
-[; ;main.c: 56: 
-[e = _TRISC -> -> 240 `i `uc ]
-"58
-[; ;main.c: 58:         master_tally = 1;
+"50
+[; ;main.c: 50:     } else {
+[e = _ANSEL -> -> 0 `i `uc ]
+"51
+[; ;main.c: 51: 
+[e = _TRISC -> -> 0 `i `uc ]
+"53
+[; ;main.c: 53:     }
 [e = _raw_input -> -> 0 `i `uc ]
-"59
-[; ;main.c: 59:     } else {
-[e = _masked_input -> -> 0 `i `uc ]
-"60
-[; ;main.c: 60:         master_tally = 0;
-[e = _output_lines_pos -> -> 0 `i `uc ]
-"61
-[; ;main.c: 61:     }
-[e = _output_lines_neg -> -> 0 `i `uc ]
-"62
-[; ;main.c: 62: 
-[e = _master_tally -> -> 0 `i `uc ]
-"64
-[; ;main.c: 64: 
+"54
+[; ;main.c: 54: }
+[e = _positive_out -> -> 0 `i `uc ]
+"55
+[e = _negative_out -> -> 0 `i `uc ]
+"56
 [e :UE 139 ]
 }
-"70
+"58
 [v _process_io `(v ~T0 @X0 1 ef ]
 {
 [e :U _process_io ]
 [f ]
-"73
-[e = _raw_input -> & -> _PORTC `i -> 240 `i `uc ]
-"75
-[e = _output_lines_pos _raw_input ]
-"76
-[e = _output_lines_neg -> ~ -> _output_lines_pos `i `uc ]
-"79
-[e $ ! != -> _output_lines_neg `i -> 0 `i 141  ]
+"61
+[e = _raw_input -> & -> _PORTB `i -> 240 `i `uc ]
+"63
+[e = _positive_out _raw_input ]
+"64
+[e = _negative_out -> & ~ >> -> _positive_out `i -> 4 `i -> 15 `i `uc ]
+"67
+[e = _PORTC -> | -> _positive_out `i -> _negative_out `i `uc ]
+"69
+[e $ ! == -> _positive_out `i -> 240 `i 141  ]
 {
-"80
-[e = _master_tally -> -> 1 `i `uc ]
-"81
+"71
+[e =& _PORTA -> ~ -> 32 `i `Vuc ]
+"72
 }
 [e $U 142  ]
 [e :U 141 ]
 {
-"82
-[e = _master_tally -> -> 0 `i `uc ]
-"83
+"74
+[e =| _PORTA -> -> 32 `i `Vuc ]
+"75
 }
 [e :U 142 ]
-"89
+"76
 [e :UE 140 ]
 }

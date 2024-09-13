@@ -2418,7 +2418,7 @@ extern __bank0 __bit __timeout;
 
 
 
-#pragma config FOSC = EXTRCIO
+#pragma config FOSC = INTRCIO
 #pragma config WDTE = ON
 #pragma config PWRTE = OFF
 #pragma config MCLRE = ON
@@ -2429,14 +2429,10 @@ extern __bank0 __bit __timeout;
 #pragma config FCMEN = ON
 
 void system_init(void);
-
 void process_io(void);
 
-unsigned char input_lines;
-unsigned char masked_input;
-unsigned char output_lines_pos;
-unsigned char output_lines_neg;
-unsigned char master_tally;
+unsigned char positive_out;
+unsigned char negative_out;
 unsigned char raw_input;
 
 void main(void) {
@@ -2448,51 +2444,42 @@ void main(void) {
         process_io();
 
     }
-
-
-
 }
 
 void system_init(void){
 
     PORTA = 0;
-    TRISA = 0x20;
+    ANSEL = 0;
+    TRISA = 0x00;
 
     PORTB = 0;
     TRISB = 0xf0;
 
     PORTC = 0;
-    TRISC = 0xf0;
+    ANSEL = 0;
+    TRISC = 0x00;
 
     raw_input = 0;
-    masked_input = 0;
-    output_lines_pos = 0;
-    output_lines_neg = 0;
-    master_tally = 0;
-
+    positive_out = 0;
+    negative_out = 0;
 }
-
-
-
-
 
 void process_io(void){
 
 
-    raw_input = (PORTC & 0xf0);
+    raw_input = (PORTB & 0xf0);
 
-    output_lines_pos = raw_input;
-    output_lines_neg = ~output_lines_pos;
+    positive_out = raw_input;
+    negative_out = (~(positive_out >> 4)) & 0x0f;
 
 
-    if(output_lines_neg) {
-        master_tally = 1;
+    PORTC = (positive_out | negative_out);
+
+    if(positive_out == 0xf0) {
+
+        PORTA &= ~0x20;
     } else {
-        master_tally = 0;
+
+        PORTA |= 0x20;
     }
-
-
-
-
-
 }

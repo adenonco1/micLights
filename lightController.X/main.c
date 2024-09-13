@@ -9,7 +9,7 @@
 #include <xc.h>
 
 // CONFIG
-#pragma config FOSC = EXTRCIO   // Oscillator Selection bits (RCIO oscillator: I/O function on RA4/OSC2/CLKOUT pin, RC on RA5/OSC1/CLKIN)
+#pragma config FOSC = INTRCIO   // Oscillator Selection bits (INTOSCIO oscillator: I/O function on RA4/OSC2/CLKOUT pin, I/O function on RA5/OSC1/CLKIN)
 #pragma config WDTE = ON        // Watchdog Timer Enable bit (WDT enabled)
 #pragma config PWRTE = OFF      // Power-up Timer Enable bit (PWRT disabled)
 #pragma config MCLRE = ON       // MCLR Pin Function Select bit (MCLR pin function is MCLR)
@@ -20,14 +20,10 @@
 #pragma config FCMEN = ON       // Fail-Safe Clock Monitor Enabled bit (Fail-Safe Clock Monitor is enabled)
 
 void system_init(void);
-
 void process_io(void);
 
-unsigned char input_lines;
-unsigned char masked_input;
-unsigned char output_lines_pos;
-unsigned char output_lines_neg;
-unsigned char master_tally;
+unsigned char positive_out;
+unsigned char negative_out;
 unsigned char raw_input;
 
 void main(void) {
@@ -39,58 +35,49 @@ void main(void) {
         process_io();
         
     }
-    
-    
-//    return;
 }
 
 void system_init(void){
     
     PORTA = 0;
-    TRISA = 0x20;
+    ANSEL = 0;
+    TRISA = 0x00;
     
     PORTB = 0;
     TRISB = 0xf0;
     
     PORTC = 0;
-    TRISC = 0xf0;
+    ANSEL = 0;
+    TRISC = 0x00;
     
     raw_input = 0;
-    masked_input = 0;
-    output_lines_pos = 0;
-    output_lines_neg = 0;
-    master_tally = 0;
- 
+    positive_out = 0;
+    negative_out = 0; 
 }
-
-
-
-
 
 void process_io(void){
     
     //grab the console inputs
-    raw_input = (PORTC & 0xf0);
-    //set the positive outputs
-    output_lines_pos = raw_input;
-    output_lines_neg = ~output_lines_pos;
+    raw_input = (PORTB & 0xf0);
     
+    positive_out = raw_input;
+    negative_out = (~(positive_out >> 4)) & 0x0f;
+    //negative_out = (negative_out & 0x0f);
     
-    if(output_lines_neg) {
-        master_tally = 1;
+    PORTC = (positive_out | negative_out);
+        
+    if(positive_out == 0xf0) {
+        //master_tally = 1;
+        PORTA &= ~0x20;
     } else {
-        master_tally = 0;
+        //master_tally = 0;
+        PORTA |= 0x20;
     }
-    
-    
-    
-    
-    
 }
 
-//PORTC 4, 5, 6, 7 inputs from console
+//PORTC 4, 5, 6, 7 negative logic outputs
 //PORTC 0, 1, 2, 3 positive logic outputs
-//PORTB 4, 5, 6, 7 negative logic outputs
+//PORTB 4, 5, 6, 7 console inputs
 //PORTA5, main tally out
 
 /*
