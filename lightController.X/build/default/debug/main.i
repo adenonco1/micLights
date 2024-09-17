@@ -2430,6 +2430,7 @@ extern __bank0 __bit __timeout;
 
 void system_init(void);
 void process_io(void);
+void init_timer0(void);
 
 unsigned char positive_out;
 unsigned char negative_out;
@@ -2439,14 +2440,22 @@ void main(void) {
 
     system_init();
 
+    init_timer0();
+
     while(1) {
+
+        while((INTCON & 0x04) == 0);
 
         process_io();
 
+
+        INTCON &= ~0x04;
     }
 }
 
 void system_init(void){
+
+
 
     PORTA = 0;
     ANSEL = 0;
@@ -2459,9 +2468,22 @@ void system_init(void){
     ANSEL = 0;
     TRISC = 0x00;
 
+
+    OPTION_REG &= ~0x80;
+
     raw_input = 0;
     positive_out = 0;
     negative_out = 0;
+}
+
+void init_timer0(void){
+
+    OPTION_REG &= ~0x20;
+
+    OPTION_REG &= ~0x08;
+
+    OPTION_REG |= 0x07;
+    OPTION_REG &= ~0x01;
 }
 
 void process_io(void){

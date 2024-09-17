@@ -21,6 +21,7 @@
 
 void system_init(void);
 void process_io(void);
+void init_timer0(void);
 
 unsigned char positive_out;
 unsigned char negative_out;
@@ -30,14 +31,22 @@ void main(void) {
     
     system_init();
     
+    init_timer0();
+    
     while(1) {
         
-        process_io();
+        while((INTCON & 0x04) == 0);
         
+        process_io();               //should fire this every 32.5mS
+        
+        //clear the TMR0 int flag
+        INTCON &= ~0x04;
     }
 }
 
 void system_init(void){
+    
+    //to do: set PB pull ups
     
     PORTA = 0;
     ANSEL = 0;
@@ -50,15 +59,28 @@ void system_init(void){
     ANSEL = 0;
     TRISC = 0x00;
     
+    //globally enable pull ups
+    OPTION_REG &= ~0x80;
+    
     raw_input = 0;
     positive_out = 0;
     negative_out = 0; 
 }
 
+void init_timer0(void){
+    
+    OPTION_REG &= ~0x20;    //timer0 set prescaler input to Fosc/4
+    
+    OPTION_REG &= ~0x08;    //Set prescaler input
+    
+    OPTION_REG |= 0x07;     //set PSA0, 1 and 2 high. Prescaler = 256
+    OPTION_REG &= ~0x01;
+}
+
 void process_io(void){
     
     //grab the console inputs
-    raw_input = (PORTB & 0xf0);
+    raw_input = (PORTB & 0xf0);     //active low
     
     positive_out = raw_input;
     negative_out = (~(positive_out >> 4)) & 0x0f;

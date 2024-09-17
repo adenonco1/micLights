@@ -11,11 +11,13 @@
 [v ___eecpymem __eecpymem `(v  1 e 1 0 ]
 "39
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
-"29 C:\Users\Andy\Desktop\repos\micLights\lightController.X\main.c
+"30 C:\Users\Andy\Desktop\repos\micLights\lightController.X\main.c
 [v _main main `(v  1 e 1 0 ]
-"40
+"47
 [v _system_init system_init `(v  1 e 1 0 ]
-"58
+"70
+[v _init_timer0 init_timer0 `(v  1 e 1 0 ]
+"80
 [v _process_io process_io `(v  1 e 1 0 ]
 "166 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc\pic16f690.h
 [v _PORTA PORTA `VEuc  1 e 1 @5 ]
@@ -23,6 +25,10 @@
 [v _PORTB PORTB `VEuc  1 e 1 @6 ]
 "255
 [v _PORTC PORTC `VEuc  1 e 1 @7 ]
+"324
+[v _INTCON INTCON `VEuc  1 e 1 @11 ]
+"1175
+[v _OPTION_REG OPTION_REG `VEuc  1 e 1 @129 ]
 "1245
 [v _TRISA TRISA `VEuc  1 e 1 @133 ]
 "1295
@@ -31,24 +37,29 @@
 [v _TRISC TRISC `VEuc  1 e 1 @135 ]
 "3002
 [v _ANSEL ANSEL `VEuc  1 e 1 @286 ]
-"25 C:\Users\Andy\Desktop\repos\micLights\lightController.X\main.c
+"26 C:\Users\Andy\Desktop\repos\micLights\lightController.X\main.c
 [v _positive_out positive_out `uc  1 e 1 0 ]
-"26
-[v _negative_out negative_out `uc  1 e 1 0 ]
 "27
+[v _negative_out negative_out `uc  1 e 1 0 ]
+"28
 [v _raw_input raw_input `uc  1 e 1 0 ]
-"29
+"30
 [v _main main `(v  1 e 1 0 ]
 {
-"38
+"45
 } 0
-"40
+"47
 [v _system_init system_init `(v  1 e 1 0 ]
 {
-"56
+"68
 } 0
-"58
+"80
 [v _process_io process_io `(v  1 e 1 0 ]
 {
-"76
+"98
+} 0
+"70
+[v _init_timer0 init_timer0 `(v  1 e 1 0 ]
+{
+"78
 } 0

@@ -1,10 +1,16 @@
 Version 4.0 HI-TECH Software Intermediate Code
 [p mainexit ]
 "22 main.c
-[; ;main.c: 22:     TRISA = 0x00;
+[; ;main.c: 22:     }
 [v _system_init `(v ~T0 @X0 0 ef ]
-"23
-[; ;main.c: 23: 
+"24
+[; ;main.c: 24: 
+[v _init_timer0 `(v ~T0 @X0 0 ef ]
+"324 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc\pic16f690.h
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc\pic16f690.h: 324: extern volatile unsigned char INTCON __attribute__((address(0x00B)));
+[v _INTCON `Vuc ~T0 @X0 0 e@11 ]
+"23 main.c
+[; ;main.c: 23: }
 [v _process_io `(v ~T0 @X0 0 ef ]
 "166 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc\pic16f690.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc\pic16f690.h: 166: extern volatile unsigned char PORTA __attribute__((address(0x005)));
@@ -27,6 +33,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "1334
 [; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc\pic16f690.h: 1334: extern volatile unsigned char TRISC __attribute__((address(0x087)));
 [v _TRISC `Vuc ~T0 @X0 0 e@135 ]
+"1175
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc\pic16f690.h: 1175: extern volatile unsigned char OPTION_REG __attribute__((address(0x081)));
+[v _OPTION_REG `Vuc ~T0 @X0 0 e@129 ]
 "54 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc\pic16f690.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc\pic16f690.h: 54: __asm("INDF equ 00h");
 [; <" INDF equ 00h ;# ">
@@ -247,137 +256,175 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc\pic16f690.h: 3200: __asm("SRCON equ 019Eh");
 [; <" SRCON equ 019Eh ;# ">
 "12 main.c
-[; ;main.c: 12: 
+[; ;main.c: 12:     init_timer0();
 [p x FOSC  =  INTRCIO    ]
 "13
-[; ;main.c: 13:         process_io();
+[; ;main.c: 13: 
 [p x WDTE  =  ON         ]
 "14
-[; ;main.c: 14: 
+[; ;main.c: 14:     while(1) {
 [p x PWRTE  =  OFF       ]
 "15
-[; ;main.c: 15:     }
+[; ;main.c: 15: 
 [p x MCLRE  =  ON        ]
 "16
-[; ;main.c: 16: }
+[; ;main.c: 16:         while((INTCON & 0x04) == 0);
 [p x CP  =  OFF          ]
 "17
 [; ;main.c: 17: 
 [p x CPD  =  OFF         ]
 "18
-[; ;main.c: 18: void system_init(void){
+[; ;main.c: 18:         process_io();
 [p x BOREN  =  ON        ]
 "19
 [; ;main.c: 19: 
 [p x IESO  =  ON         ]
 "20
-[; ;main.c: 20:     PORTA = 0;
+[; ;main.c: 20: 
 [p x FCMEN  =  ON        ]
-"25
-[; ;main.c: 25:     TRISB = 0xf0;
-[v _positive_out `uc ~T0 @X0 1 e ]
 "26
 [; ;main.c: 26: 
-[v _negative_out `uc ~T0 @X0 1 e ]
+[v _positive_out `uc ~T0 @X0 1 e ]
 "27
-[; ;main.c: 27:     PORTC = 0;
+[; ;main.c: 27: 
+[v _negative_out `uc ~T0 @X0 1 e ]
+"28
+[; ;main.c: 28: 
 [v _raw_input `uc ~T0 @X0 1 e ]
 [v $root$_main `(v ~T0 @X0 0 e ]
-"29
-[; ;main.c: 29:     TRISC = 0x00;
+"30
+[; ;main.c: 30:     ANSEL = 0;
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"31
-[; ;main.c: 31:     raw_input = 0;
+"32
+[; ;main.c: 32: 
 [e ( _system_init ..  ]
-"33
-[; ;main.c: 33:     negative_out = 0;
+"34
+[; ;main.c: 34:     TRISB = 0xf0;
+[e ( _init_timer0 ..  ]
+"36
+[; ;main.c: 36:     PORTC = 0;
 [e :U 137 ]
 {
-"35
-[; ;main.c: 35: 
+"38
+[; ;main.c: 38:     TRISC = 0x00;
+[e $U 139  ]
+[e :U 140 ]
+[e :U 139 ]
+[e $ == & -> _INTCON `i -> 4 `i -> 0 `i 140  ]
+[e :U 141 ]
+"40
+[; ;main.c: 40: 
 [e ( _process_io ..  ]
-"37
-[; ;main.c: 37: 
+"43
+[; ;main.c: 43:     raw_input = 0;
+[e =& _INTCON -> ~ -> 4 `i `Vuc ]
+"44
+[; ;main.c: 44:     positive_out = 0;
 }
 [e :U 136 ]
 [e $U 137  ]
 [e :U 138 ]
-"38
-[; ;main.c: 38: 
+"45
+[; ;main.c: 45:     negative_out = 0;
 [e :UE 135 ]
 }
-"40
-[; ;main.c: 40: 
+"47
+[; ;main.c: 47: 
 [v _system_init `(v ~T0 @X0 1 ef ]
 {
 [e :U _system_init ]
 [f ]
-"42
-[; ;main.c: 42:     negative_out = (~(positive_out >> 4)) & 0x0f;
-[e = _PORTA -> -> 0 `i `uc ]
-"43
-[; ;main.c: 43: 
-[e = _ANSEL -> -> 0 `i `uc ]
-"44
-[; ;main.c: 44: 
-[e = _TRISA -> -> 0 `i `uc ]
-"46
-[; ;main.c: 46: 
-[e = _PORTB -> -> 0 `i `uc ]
-"47
-[; ;main.c: 47:     if(positive_out == 0xf0) {
-[e = _TRISB -> -> 240 `i `uc ]
-"49
-[; ;main.c: 49:         PORTA &= ~0x20;
-[e = _PORTC -> -> 0 `i `uc ]
-"50
-[; ;main.c: 50:     } else {
-[e = _ANSEL -> -> 0 `i `uc ]
 "51
 [; ;main.c: 51: 
-[e = _TRISC -> -> 0 `i `uc ]
+[e = _PORTA -> -> 0 `i `uc ]
+"52
+[; ;main.c: 52:     OPTION_REG &= ~0x08;
+[e = _ANSEL -> -> 0 `i `uc ]
 "53
-[; ;main.c: 53:     }
-[e = _raw_input -> -> 0 `i `uc ]
-"54
-[; ;main.c: 54: }
-[e = _positive_out -> -> 0 `i `uc ]
+[; ;main.c: 53: 
+[e = _TRISA -> -> 0 `i `uc ]
 "55
-[e = _negative_out -> -> 0 `i `uc ]
+[; ;main.c: 55:     OPTION_REG &= ~0x01;
+[e = _PORTB -> -> 0 `i `uc ]
 "56
-[e :UE 139 ]
-}
+[; ;main.c: 56: }
+[e = _TRISB -> -> 240 `i `uc ]
 "58
+[; ;main.c: 58: void process_io(void){
+[e = _PORTC -> -> 0 `i `uc ]
+"59
+[; ;main.c: 59: 
+[e = _ANSEL -> -> 0 `i `uc ]
+"60
+[; ;main.c: 60: 
+[e = _TRISC -> -> 0 `i `uc ]
+"63
+[; ;main.c: 63:     positive_out = raw_input;
+[e =& _OPTION_REG -> ~ -> 128 `i `Vuc ]
+"65
+[; ;main.c: 65: 
+[e = _raw_input -> -> 0 `i `uc ]
+"66
+[; ;main.c: 66: 
+[e = _positive_out -> -> 0 `i `uc ]
+"67
+[; ;main.c: 67:     PORTC = (positive_out | negative_out);
+[e = _negative_out -> -> 0 `i `uc ]
+"68
+[; ;main.c: 68: 
+[e :UE 142 ]
+}
+"70
+[; ;main.c: 70: 
+[v _init_timer0 `(v ~T0 @X0 1 ef ]
+{
+[e :U _init_timer0 ]
+[f ]
+"72
+[; ;main.c: 72:     } else {
+[e =& _OPTION_REG -> ~ -> 32 `i `Vuc ]
+"74
+[; ;main.c: 74:         PORTA |= 0x20;
+[e =& _OPTION_REG -> ~ -> 8 `i `Vuc ]
+"76
+[; ;main.c: 76: }
+[e =| _OPTION_REG -> -> 7 `i `Vuc ]
+"77
+[e =& _OPTION_REG -> ~ -> 1 `i `Vuc ]
+"78
+[e :UE 143 ]
+}
+"80
 [v _process_io `(v ~T0 @X0 1 ef ]
 {
 [e :U _process_io ]
 [f ]
-"61
+"83
 [e = _raw_input -> & -> _PORTB `i -> 240 `i `uc ]
-"63
+"85
 [e = _positive_out _raw_input ]
-"64
+"86
 [e = _negative_out -> & ~ >> -> _positive_out `i -> 4 `i -> 15 `i `uc ]
-"67
+"89
 [e = _PORTC -> | -> _positive_out `i -> _negative_out `i `uc ]
-"69
-[e $ ! == -> _positive_out `i -> 240 `i 141  ]
+"91
+[e $ ! == -> _positive_out `i -> 240 `i 145  ]
 {
-"71
+"93
 [e =& _PORTA -> ~ -> 32 `i `Vuc ]
-"72
+"94
 }
-[e $U 142  ]
-[e :U 141 ]
+[e $U 146  ]
+[e :U 145 ]
 {
-"74
+"96
 [e =| _PORTA -> -> 32 `i `Vuc ]
-"75
+"97
 }
-[e :U 142 ]
-"76
-[e :UE 140 ]
+[e :U 146 ]
+"98
+[e :UE 144 ]
 }
