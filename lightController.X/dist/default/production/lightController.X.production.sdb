@@ -13,12 +13,10 @@
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
 "30 C:\Users\adeno\OneDrive\Desktop\repos\micLights\lightController.X\main.c
 [v _main main `(v  1 e 1 0 ]
-"47
+"49
 [v _system_init system_init `(v  1 e 1 0 ]
-"70
+"72
 [v _init_timer0 init_timer0 `(v  1 e 1 0 ]
-"80
-[v _process_io process_io `(v  1 e 1 0 ]
 "166 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc\pic16f690.h
 [v _PORTA PORTA `VEuc  1 e 1 @5 ]
 "216
@@ -46,20 +44,15 @@
 "30
 [v _main main `(v  1 e 1 0 ]
 {
-"45
-} 0
 "47
+} 0
+"49
 [v _system_init system_init `(v  1 e 1 0 ]
 {
-"68
-} 0
-"80
-[v _process_io process_io `(v  1 e 1 0 ]
-{
-"99
-} 0
 "70
+} 0
+"72
 [v _init_timer0 init_timer0 `(v  1 e 1 0 ]
 {
-"78
+"80
 } 0

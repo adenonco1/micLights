@@ -2421,7 +2421,7 @@ extern __bank0 __bit __timeout;
 #pragma config FOSC = INTRCIO
 #pragma config WDTE = OFF
 #pragma config PWRTE = OFF
-#pragma config MCLRE = ON
+#pragma config MCLRE = OFF
 #pragma config CP = OFF
 #pragma config CPD = OFF
 #pragma config BOREN = ON
@@ -2446,7 +2446,9 @@ void main(void) {
 
         while((INTCON & 0x04) == 0);
 
-        process_io();
+
+
+        PORTC = 0xe1;
 
 
         INTCON &= ~0x04;
