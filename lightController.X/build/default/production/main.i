@@ -2446,9 +2446,9 @@ void main(void) {
 
         while((INTCON & 0x04) == 0);
 
+        process_io();
 
 
-        PORTC = 0xe1;
 
 
         INTCON &= ~0x04;
@@ -2492,7 +2492,7 @@ void process_io(void){
 
 
 
-    raw_input = 0x70;
+    raw_input = 0xf0;
 
     positive_out = raw_input;
     negative_out = (~(positive_out >> 4)) & 0x0f;

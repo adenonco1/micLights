@@ -9,10 +9,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "324 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc\pic16f690.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc\pic16f690.h: 324: extern volatile unsigned char INTCON __attribute__((address(0x00B)));
 [v _INTCON `Vuc ~T0 @X0 0 e@11 ]
-"255
-[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc\pic16f690.h: 255: extern volatile unsigned char PORTC __attribute__((address(0x007)));
-[v _PORTC `Vuc ~T0 @X0 0 e@7 ]
-"166
+"23 main.c
+[; ;main.c: 23:         INTCON &= ~0x04;
+[v _process_io `(v ~T0 @X0 0 ef ]
+"166 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc\pic16f690.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc\pic16f690.h: 166: extern volatile unsigned char PORTA __attribute__((address(0x005)));
 [v _PORTA `Vuc ~T0 @X0 0 e@5 ]
 "3002
@@ -27,6 +27,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "1295
 [; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc\pic16f690.h: 1295: extern volatile unsigned char TRISB __attribute__((address(0x086)));
 [v _TRISB `Vuc ~T0 @X0 0 e@134 ]
+"255
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc\pic16f690.h: 255: extern volatile unsigned char PORTC __attribute__((address(0x007)));
+[v _PORTC `Vuc ~T0 @X0 0 e@7 ]
 "1334
 [; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc\pic16f690.h: 1334: extern volatile unsigned char TRISC __attribute__((address(0x087)));
 [v _TRISC `Vuc ~T0 @X0 0 e@135 ]
@@ -271,13 +274,13 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 17: 
 [p x CPD  =  OFF         ]
 "18
-[; ;main.c: 18: 
+[; ;main.c: 18:         process_io();
 [p x BOREN  =  ON        ]
 "19
 [; ;main.c: 19: 
 [p x IESO  =  ON         ]
 "20
-[; ;main.c: 20:         PORTC = 0xe1;
+[; ;main.c: 20: 
 [p x FCMEN  =  ON        ]
 "26
 [; ;main.c: 26: 
@@ -312,9 +315,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 139 ]
 [e $ == & -> _INTCON `i -> 4 `i -> 0 `i 140  ]
 [e :U 141 ]
-"42
-[; ;main.c: 42: 
-[e = _PORTC -> -> 225 `i `uc ]
+"40
+[; ;main.c: 40:     TRISC = 0x00;
+[e ( _process_io ..  ]
 "45
 [; ;main.c: 45:     raw_input = 0;
 [e =& _INTCON -> ~ -> 4 `i `Vuc ]
@@ -401,7 +404,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U _process_io ]
 [f ]
 "86
-[e = _raw_input -> -> 112 `i `uc ]
+[e = _raw_input -> -> 240 `i `uc ]
 "88
 [e = _positive_out _raw_input ]
 "89

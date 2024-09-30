@@ -37,9 +37,9 @@ void main(void) {
         
         while((INTCON & 0x04) == 0);
         
-//        process_io();               //should fire this every 32.5mS
+        process_io();               //should fire this every 32.5mS
         
-        PORTC = 0xe1 ;
+//        PORTC = 0xf0;
         
         //clear the TMR0 int flag
         INTCON &= ~0x04;
@@ -83,7 +83,7 @@ void process_io(void){
     
     //grab the console inputs
     //raw_input = (PORTB & 0xf0);     //active low
-    raw_input = 0x70;
+    raw_input = 0xf0;
     
     positive_out = raw_input;
     negative_out = (~(positive_out >> 4)) & 0x0f;
