@@ -2449,8 +2449,6 @@ void main(void) {
         process_io();
 
 
-
-
         INTCON &= ~0x04;
     }
 }
@@ -2459,15 +2457,18 @@ void system_init(void){
 
 
 
-    PORTA = 0;
     ANSEL = 0;
+    ANSELH = 0;
+
+    PORTA = 0;
     TRISA = 0x00;
 
     PORTB = 0;
-    TRISB = 0xf0;
+    TRISB = 0xff;
+
+    WPUB = 0xf0;
 
     PORTC = 0;
-    ANSEL = 0;
     TRISC = 0x00;
 
 
@@ -2486,13 +2487,17 @@ void init_timer0(void){
 
     OPTION_REG |= 0x07;
     OPTION_REG &= ~0x01;
+
+
+    OPTION_REG &= ~0x80;
 }
 
 void process_io(void){
 
+    int dummy;
 
 
-    raw_input = 0xf0;
+    raw_input = (PORTB & 0xf0);
 
     positive_out = raw_input;
     negative_out = (~(positive_out >> 4)) & 0x0f;
