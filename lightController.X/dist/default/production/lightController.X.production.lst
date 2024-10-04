@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.50 build 20240725155939 
-                                                                                               Tue Oct 01 16:32:16 2024
+                                                                                               Fri Oct 04 14:13:00 2024
 
 Microchip MPLAB XC8 C Compiler v2.50 (Free license) build 20240725155939 Og1 
      1                           	processor	16F690
@@ -317,7 +317,7 @@ Microchip MPLAB XC8 C Compiler v2.50 (Free license) build 20240725155939 Og1
    303     07A4                     _main:	
    304                           ;psect for function _main
    305                           
-   306     07A4                     l624:	
+   306     07A4                     l626:	
    307                           ;incstack = 0
    308                           ; Regs used in _main: [wreg+status,2+status,0+pclath+cstack]
    309                           
@@ -334,11 +334,11 @@ Microchip MPLAB XC8 C Compiler v2.50 (Free license) build 20240725155939 Og1
    320     07AD                     u31:
    321     07AD  2FAA               	goto	l40
    322     07AE                     u30:
-   323     07AE                     l626:
+   323     07AE                     l628:
    324                           
    325                           ;main.c: 40:     PORTC = 0;
    326     07AE  118A  27D7  118A   	fcall	_process_io
-   327     07B1                     l628:
+   327     07B1                     l630:
    328                           
    329                           ;main.c: 43: 
    330     07B1  30FB               	movlw	251
@@ -524,14 +524,14 @@ Microchip MPLAB XC8 C Compiler v2.50 (Free license) build 20240725155939 Og1
    510     07F2  2FF4               	goto	u21
    511     07F3  2FF5               	goto	u20
    512     07F4                     u21:
-   513     07F4  2FF8               	goto	l54
+   513     07F4  2FF7               	goto	l624
    514     07F5                     u20:
    515     07F5                     l622:
-   516     07F5  30DF               	movlw	223
-   517     07F6  0585               	andwf	5,f	;volatile
-   518     07F7  2FF9               	goto	l56
-   519     07F8                     l54:
-   520     07F8  1685               	bsf	5,5	;volatile
+   516     07F5  1685               	bsf	5,5	;volatile
+   517     07F6  2FF9               	goto	l56
+   518     07F7                     l624:
+   519     07F7  30DF               	movlw	223
+   520     07F8  0585               	andwf	5,f	;volatile
    521     07F9                     l56:
    522     07F9  0008               	return
    523     07FA                     __end_of_process_io:
@@ -581,19 +581,19 @@ Microchip MPLAB XC8 C Compiler v2.50 (Free license) build 20240725155939 Og1
    567     0799  1303               	bcf	3,6	;RP1=0, select bank1
    568     079A  0581               	andwf	1,f	;volatile
    569                           
-   570                           ;main.c: 77:     if(positive_out == 0xf0) {
+   570                           ;main.c: 77: 
    571     079B  30F7               	movlw	247
    572     079C  0581               	andwf	1,f	;volatile
    573                           
-   574                           ;main.c: 79:         PORTA &= ~0x20;
+   574                           ;main.c: 79: 
    575     079D  3007               	movlw	7
    576     079E  0481               	iorwf	1,f	;volatile
    577                           
-   578                           ;main.c: 80:     } else {
+   578                           ;main.c: 80:         PORTA |= 0x20;
    579     079F  30FE               	movlw	254
    580     07A0  0581               	andwf	1,f	;volatile
    581                           
-   582                           ;main.c: 83:     }
+   582                           ;main.c: 83:         PORTA &= ~0x20;
    583     07A1  307F               	movlw	127
    584     07A2  0581               	andwf	1,f	;volatile
    585     07A3                     l51:
@@ -705,17 +705,17 @@ DATA                 0      0       4      0.0%
 
 
 Microchip Technology PIC Macro Assembler V2.50 build 20240725155939 
-Symbol Table                                                                                   Tue Oct 01 16:32:16 2024
+Symbol Table                                                                                   Fri Oct 04 14:13:00 2024
 
-                     l40 07AA                       l51 07A3                       l54 07F8  
-                     l56 07F9                       l48 07D6                       u20 07F5  
-                     u21 07F4                       u30 07AE                       u15 07E2  
-                     u31 07AD      __end_of_system_init 07D7                      l600 07B6  
-                    l610 07D4                      l602 07C3                      l620 07DD  
-                    l612 07D5                      l604 07C7                      l614 0797  
-                    l622 07F5                      l606 07D1                      l616 07D7  
-                    l608 07D3                      l624 07A4                      l618 07DB  
-                    l626 07AE                      l628 07B1                     _WPUB 0115  
+                     l40 07AA                       l51 07A3                       l56 07F9  
+                     l48 07D6                       u20 07F5                       u21 07F4  
+                     u30 07AE                       u15 07E2                       u31 07AD  
+    __end_of_system_init 07D7                      l600 07B6                      l610 07D4  
+                    l602 07C3                      l620 07DD                      l612 07D5  
+                    l604 07C7                      l614 0797                      l622 07F5  
+                    l606 07D1                      l630 07B1                      l624 07F7  
+                    l616 07D7                      l608 07D3                      l618 07DB  
+                    l626 07A4                      l628 07AE                     _WPUB 0115  
                    _main 07A4                     btemp 007E                     start 0000  
                   ?_main 0073                    _ANSEL 011E                    _PORTA 0005  
                   _PORTB 0006                    _PORTC 0007                    _TRISA 0085  

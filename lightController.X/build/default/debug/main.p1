@@ -1,20 +1,26 @@
 Version 4.0 HI-TECH Software Intermediate Code
 [p mainexit ]
 "22 main.c
-[; ;main.c: 22: 
+[; ;main.c: 22:     }
 [v _system_init `(v ~T0 @X0 0 ef ]
 "24
 [; ;main.c: 24: 
 [v _init_timer0 `(v ~T0 @X0 0 ef ]
-"23
-[; ;main.c: 23: 
+"324 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc\pic16f690.h
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc\pic16f690.h: 324: extern volatile unsigned char INTCON __attribute__((address(0x00B)));
+[v _INTCON `Vuc ~T0 @X0 0 e@11 ]
+"23 main.c
+[; ;main.c: 23: }
 [v _process_io `(v ~T0 @X0 0 ef ]
-"166 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc\pic16f690.h
-[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc\pic16f690.h: 166: extern volatile unsigned char PORTA __attribute__((address(0x005)));
-[v _PORTA `Vuc ~T0 @X0 0 e@5 ]
-"3002
+"3002 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc\pic16f690.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc\pic16f690.h: 3002: extern volatile unsigned char ANSEL __attribute__((address(0x11E)));
 [v _ANSEL `Vuc ~T0 @X0 0 e@286 ]
+"3064
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc\pic16f690.h: 3064: extern volatile unsigned char ANSELH __attribute__((address(0x11F)));
+[v _ANSELH `Vuc ~T0 @X0 0 e@287 ]
+"166
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc\pic16f690.h: 166: extern volatile unsigned char PORTA __attribute__((address(0x005)));
+[v _PORTA `Vuc ~T0 @X0 0 e@5 ]
 "1245
 [; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc\pic16f690.h: 1245: extern volatile unsigned char TRISA __attribute__((address(0x085)));
 [v _TRISA `Vuc ~T0 @X0 0 e@133 ]
@@ -268,7 +274,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 15: 
 [p x MCLRE  =  OFF       ]
 "16
-[; ;main.c: 16: 
+[; ;main.c: 16:         while((INTCON & 0x04) == 0);
 [p x CP  =  OFF          ]
 "17
 [; ;main.c: 17: 
@@ -283,17 +289,17 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 20: 
 [p x FCMEN  =  ON        ]
 "26
-[; ;main.c: 26: }
+[; ;main.c: 26: 
 [v _positive_out `uc ~T0 @X0 1 e ]
 "27
 [; ;main.c: 27: 
 [v _negative_out `uc ~T0 @X0 1 e ]
 "28
-[; ;main.c: 28: void system_init(void){
+[; ;main.c: 28: 
 [v _raw_input `uc ~T0 @X0 1 e ]
 [v $root$_main `(v ~T0 @X0 0 e ]
 "30
-[; ;main.c: 30: 
+[; ;main.c: 30:     ANSELH = 0;
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
@@ -302,119 +308,139 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 32:     PORTA = 0;
 [e ( _system_init ..  ]
 "34
-[; ;main.c: 34:     TRISA = 0x00;
+[; ;main.c: 34: 
 [e ( _init_timer0 ..  ]
 "36
-[; ;main.c: 36:     PORTB = 0;
+[; ;main.c: 36:     TRISB = 0xff;
 [e :U 137 ]
 {
+"38
+[; ;main.c: 38:     WPUB = 0xf0;
+[e $U 139  ]
+[e :U 140 ]
+[e :U 139 ]
+[e $ == & -> _INTCON `i -> 4 `i -> 0 `i 140  ]
+[e :U 141 ]
 "40
-[; ;main.c: 40: 
+[; ;main.c: 40:     PORTC = 0;
 [e ( _process_io ..  ]
-"47
-[; ;main.c: 47: 
+"43
+[; ;main.c: 43: 
+[e =& _INTCON -> ~ -> 4 `i `Vuc ]
+"44
+[; ;main.c: 44:     OPTION_REG &= ~0x80;
 }
 [e :U 136 ]
 [e $U 137  ]
 [e :U 138 ]
-"48
-[; ;main.c: 48:     raw_input = 0;
+"45
+[; ;main.c: 45: 
 [e :UE 135 ]
 }
-"50
-[; ;main.c: 50:     negative_out = 0;
+"47
+[; ;main.c: 47:     positive_out = 0;
 [v _system_init `(v ~T0 @X0 1 ef ]
 {
 [e :U _system_init ]
 [f ]
+"51
+[; ;main.c: 51: void init_timer0(void){
+[e = _ANSEL -> -> 0 `i `uc ]
+"52
+[; ;main.c: 52: 
+[e = _ANSELH -> -> 0 `i `uc ]
 "54
 [; ;main.c: 54: 
 [e = _PORTA -> -> 0 `i `uc ]
 "55
-[; ;main.c: 55:     OPTION_REG &= ~0x20;
-[e = _ANSEL -> -> 0 `i `uc ]
-"56
-[; ;main.c: 56: 
+[; ;main.c: 55:     OPTION_REG &= ~0x08;
 [e = _TRISA -> -> 0 `i `uc ]
-"58
-[; ;main.c: 58: 
+"57
+[; ;main.c: 57:     OPTION_REG |= 0x07;
 [e = _PORTB -> -> 0 `i `uc ]
-"59
-[; ;main.c: 59:     OPTION_REG |= 0x07;
+"58
+[; ;main.c: 58:     OPTION_REG &= ~0x01;
 [e = _TRISB -> -> 255 `i `uc ]
-"61
-[; ;main.c: 61: 
+"60
+[; ;main.c: 60: 
 [e = _WPUB -> -> 240 `i `uc ]
-"63
-[; ;main.c: 63:     OPTION_REG &= ~0x80;
+"62
+[; ;main.c: 62: }
 [e = _PORTC -> -> 0 `i `uc ]
-"64
-[; ;main.c: 64: }
-[e = _ANSEL -> -> 0 `i `uc ]
-"65
-[; ;main.c: 65: 
+"63
+[; ;main.c: 63: 
 [e = _TRISC -> -> 0 `i `uc ]
-"68
-[; ;main.c: 68:     int dummy;
+"66
+[; ;main.c: 66:     int dummy;
 [e =& _OPTION_REG -> ~ -> 128 `i `Vuc ]
+"68
+[; ;main.c: 68: 
+[e = _raw_input -> -> 0 `i `uc ]
+"69
+[; ;main.c: 69:     raw_input = (PORTB & 0xf0);
+[e = _positive_out -> -> 0 `i `uc ]
 "70
 [; ;main.c: 70: 
-[e = _raw_input -> -> 0 `i `uc ]
-"71
-[; ;main.c: 71:     raw_input = (PORTB & 0xf0);
-[e = _positive_out -> -> 0 `i `uc ]
-"72
-[; ;main.c: 72: 
 [e = _negative_out -> -> 0 `i `uc ]
+"71
+[; ;main.c: 71:     positive_out = raw_input;
+[e :UE 142 ]
+}
 "73
 [; ;main.c: 73: 
-[e :UE 139 ]
-}
-"75
-[; ;main.c: 75:         PORTC = 0x10;
 [v _init_timer0 `(v ~T0 @X0 1 ef ]
 {
 [e :U _init_timer0 ]
 [f ]
-"77
-[; ;main.c: 77:         PORTC = 0x01;
+"75
+[; ;main.c: 75:     PORTC = (positive_out | negative_out);
 [e =& _OPTION_REG -> ~ -> 32 `i `Vuc ]
-"79
+"77
+[; ;main.c: 77: 
 [e =& _OPTION_REG -> ~ -> 8 `i `Vuc ]
-"81
+"79
+[; ;main.c: 79: 
 [e =| _OPTION_REG -> -> 7 `i `Vuc ]
-"82
+"80
+[; ;main.c: 80:         PORTA |= 0x20;
 [e =& _OPTION_REG -> ~ -> 1 `i `Vuc ]
-"85
+"83
+[; ;main.c: 83:         PORTA &= ~0x20;
 [e =& _OPTION_REG -> ~ -> 128 `i `Vuc ]
-"86
-[e :UE 140 ]
+"84
+[; ;main.c: 84:     }
+[e :UE 143 ]
 }
-"88
+"86
 [v _process_io `(v ~T0 @X0 1 ef ]
 {
 [e :U _process_io ]
 [f ]
-"90
+"88
 [v _dummy `i ~T0 @X0 1 a ]
-"93
+"91
 [e = _raw_input -> & -> _PORTB `i -> 240 `i `uc ]
-"96
-[e $ ! != -> _raw_input `i -> 240 `i 142  ]
-{
+"93
+[e = _positive_out _raw_input ]
+"94
+[e = _negative_out -> & ~ >> -> _positive_out `i -> 4 `i -> 15 `i `uc ]
 "97
-[e = _PORTC -> -> 16 `i `uc ]
-"98
-}
-[e $U 143  ]
-[e :U 142 ]
-{
-"99
-[e = _PORTC -> -> 1 `i `uc ]
+[e = _PORTC -> | -> _positive_out `i -> _negative_out `i `uc ]
 "100
+[e $ ! == -> _positive_out `i -> 240 `i 145  ]
+{
+"102
+[e =| _PORTA -> -> 32 `i `Vuc ]
+"103
 }
-[e :U 143 ]
-"118
-[; ;main.c: 118: }
-[e :UE 141 ]
+[e $U 146  ]
+[e :U 145 ]
+{
+"105
+[e =& _PORTA -> ~ -> 32 `i `Vuc ]
+"106
+}
+[e :U 146 ]
+"107
+[e :UE 144 ]
 }

@@ -2444,15 +2444,12 @@ void main(void) {
 
     while(1) {
 
-
+        while((INTCON & 0x04) == 0);
 
         process_io();
 
 
-
-
-
-
+        INTCON &= ~0x04;
     }
 }
 
@@ -2460,8 +2457,10 @@ void system_init(void){
 
 
 
-    PORTA = 0;
     ANSEL = 0;
+    ANSELH = 0;
+
+    PORTA = 0;
     TRISA = 0x00;
 
     PORTB = 0;
@@ -2470,7 +2469,6 @@ void system_init(void){
     WPUB = 0xf0;
 
     PORTC = 0;
-    ANSEL = 0;
     TRISC = 0x00;
 
 
@@ -2501,11 +2499,18 @@ void process_io(void){
 
     raw_input = (PORTB & 0xf0);
 
+    positive_out = raw_input;
+    negative_out = (~(positive_out >> 4)) & 0x0f;
 
-    if(raw_input != 0xf0){
-        PORTC = 0x10;
-    }else{
-        PORTC = 0x01;
+
+    PORTC = (positive_out | negative_out);
+
+
+    if(positive_out == 0xf0) {
+
+        PORTA |= 0x20;
+    } else {
+
+        PORTA &= ~0x20;
     }
-# 118 "main.c"
 }

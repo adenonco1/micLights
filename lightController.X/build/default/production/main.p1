@@ -396,19 +396,19 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 75:     PORTC = (positive_out | negative_out);
 [e =& _OPTION_REG -> ~ -> 32 `i `Vuc ]
 "77
-[; ;main.c: 77:     if(positive_out == 0xf0) {
+[; ;main.c: 77: 
 [e =& _OPTION_REG -> ~ -> 8 `i `Vuc ]
 "79
-[; ;main.c: 79:         PORTA &= ~0x20;
+[; ;main.c: 79: 
 [e =| _OPTION_REG -> -> 7 `i `Vuc ]
 "80
-[; ;main.c: 80:     } else {
+[; ;main.c: 80:         PORTA |= 0x20;
 [e =& _OPTION_REG -> ~ -> 1 `i `Vuc ]
 "83
-[; ;main.c: 83:     }
+[; ;main.c: 83:         PORTA &= ~0x20;
 [e =& _OPTION_REG -> ~ -> 128 `i `Vuc ]
 "84
-[; ;main.c: 84: }
+[; ;main.c: 84:     }
 [e :UE 143 ]
 }
 "86
@@ -426,21 +426,21 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _negative_out -> & ~ >> -> _positive_out `i -> 4 `i -> 15 `i `uc ]
 "97
 [e = _PORTC -> | -> _positive_out `i -> _negative_out `i `uc ]
-"99
+"100
 [e $ ! == -> _positive_out `i -> 240 `i 145  ]
 {
-"101
-[e =& _PORTA -> ~ -> 32 `i `Vuc ]
 "102
+[e =| _PORTA -> -> 32 `i `Vuc ]
+"103
 }
 [e $U 146  ]
 [e :U 145 ]
 {
-"104
-[e =| _PORTA -> -> 32 `i `Vuc ]
 "105
+[e =& _PORTA -> ~ -> 32 `i `Vuc ]
+"106
 }
 [e :U 146 ]
-"106
+"107
 [e :UE 144 ]
 }

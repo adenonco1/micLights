@@ -2505,11 +2505,12 @@ void process_io(void){
 
     PORTC = (positive_out | negative_out);
 
+
     if(positive_out == 0xf0) {
 
-        PORTA &= ~0x20;
+        PORTA |= 0x20;
     } else {
 
-        PORTA |= 0x20;
+        PORTA &= ~0x20;
     }
 }

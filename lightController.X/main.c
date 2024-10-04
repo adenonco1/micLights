@@ -96,12 +96,13 @@ void process_io(void){
     
     PORTC = (positive_out | negative_out);
         
+    //An NPN driver stage is used for the on-air light, and is inverting
     if(positive_out == 0xf0) {
         //master_tally = 1;
-        PORTA &= ~0x20;
+        PORTA |= 0x20;
     } else {
         //master_tally = 0;
-        PORTA |= 0x20;
+        PORTA &= ~0x20;
     }
 }
 
